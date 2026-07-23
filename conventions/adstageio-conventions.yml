@@ -1,0 +1,54 @@
+generated: '2026-07-17'
+method: searched
+source: https://github.com/adstage/api-documentation/tree/master/src/adstage_api_concepts
+docs: https://github.com/adstage/api-documentation
+note: >-
+  Cross-cutting semantics of the AdStage Data API, captured verbatim from the
+  surviving API Blueprint documentation. The API (platform.adstage.io) is
+  defunct following the April 2020 TapClicks acquisition; retained for the
+  historical record. No idempotency contract is documented, so no Idempotency
+  pointer is emitted.
+authentication:
+  style: bearer-token
+  detail: HTTP header bearer token; optional OAuth 2 provider for multi-user apps.
+  see: authentication/adstageio-authentication.yml
+media_type:
+  hypermedia: HAL+JSON
+  detail: >-
+    Responses use HAL JSON with _embedded resources, _links, and forms for
+    navigating related resources and driving actions.
+pagination:
+  styles:
+    - style: limit-offset
+      params: [limit, offset]
+      response_links: [next, prev, first, last]
+      detail: >-
+        Specify page size with limit and page position with offset; responses
+        include _links.next / _links.prev (and sometimes first/last).
+    - style: page-token
+      params: [page_token]
+      response_links: [next_page, prev_page]
+      detail: >-
+        Newer endpoints return an opaque page_token that encodes limit/offset
+        (and may reference a cached page); a supplied page_token takes precedence
+        over limit/offset.
+entity_ids:
+  scheme: "/network/{network}/{entity_level}/{remote_id}"
+  networks:
+    [adwords, amazon, bing_ads, facebook, gemini, google_analytics, linkedin,
+     pinterest, quora, spotify, twitter, adstage]
+  entity_levels: [account, campaign, ad_group, ad, keyword, criterion]
+  detail: >-
+    entity_id is the preferred stable identifier for advertising entities across
+    normalized ad-network data; other legacy id styles may be dropped.
+versioning:
+  scheme: uri-path
+  versions: [v1, v2]
+  detail: >-
+    V1 is fully stable/released; V2 is stable with rollout in progress and is
+    generally preferred (broader features, faster performance). See
+    lifecycle/adstageio-lifecycle.yml.
+error_envelope:
+  detail: Not separately documented in the public concept docs.
+rate_limit_signal:
+  detail: Not documented in the public concept docs.

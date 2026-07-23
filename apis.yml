@@ -1,20 +1,77 @@
 aid: adstageio
 name: AdStage.io
-description: AdStage.io is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  AdStage was a cross-network advertising management, reporting, and automation
+  platform (a 500 Startups / 500 Global portfolio company, founded 2013) that let
+  marketers pull normalized advertising data from Google Ads, Microsoft/Bing Ads,
+  Facebook, LinkedIn, Twitter, Instagram, Pinterest, Amazon, Google Analytics and
+  more through a single unified interface. Its AdStage Data API (v1 and v2, HAL+JSON
+  over HTTP with bearer-token / OAuth 2 auth) exposed user, organization, and
+  advertising-entity data plus customizable cross-network reports. AdStage was
+  acquired by TapClicks in April 2020 and folded into TapClicks' Marketing
+  Intelligence platform; the standalone AdStage Data API (platform.adstage.io) is
+  now defunct, though the AdStage GitHub organization and its API Blueprint
+  documentation remain public. The adstage.io domain now serves unrelated
+  PPC/advertising content under new ownership.
 url: https://raw.githubusercontent.com/api-evangelist/adstageio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
+x-status: acquired
+x-acquired-by: TapClicks
+x-acquired-date: '2020-04-22'
+x-api-status: defunct
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
 modified: '2026-07-17'
+image: https://avatars.githubusercontent.com/u/2108068?s=200&v=4
 tags:
 - Company
-apis: []
+- Advertising
+- AdTech
+- Marketing
+- Analytics
+- Reporting
+- Advertising Data
+- Cross-Network Advertising
+- Acquired
+apis:
+- name: AdStage Data API
+  description: >-
+    Pull normalized advertising data of any granularity from many ad networks and
+    marketing analytics tools through a unified HAL+JSON interface (v1 and v2).
+    Access user/organization/advertising-entity data, upload custom data, and pull
+    customizable cross-network reports. Defunct following the 2020 TapClicks
+    acquisition; documentation preserved on GitHub.
+  humanURL: https://github.com/adstage/api-documentation
+  baseURL: https://platform.adstage.io/api
+  x-status: defunct
+  properties:
+  - type: Documentation
+    url: https://github.com/adstage/api-documentation
+  - type: APIReference
+    url: https://github.com/adstage/api-documentation/blob/master/apiary.apib
+  - type: Authentication
+    url: authentication/adstageio-authentication.yml
+  - type: Conventions
+    url: conventions/adstageio-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/adstageio-lifecycle.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +80,12 @@ maintainers:
 common:
 - type: Website
   url: https://adstage.io
+- type: GitHubOrganization
+  url: https://github.com/adstage
+- type: Documentation
+  url: https://github.com/adstage/api-documentation
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
